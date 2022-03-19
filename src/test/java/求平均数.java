@@ -5,21 +5,31 @@ import java.util.Scanner;
 public class 求平均数 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        int number;
-        int sum = 0;
-        int count = 0;
-        do {
-            number = in.nextInt();
-            if (number != -1)
-            {
-                sum = sum + number;
-                count = count + 1;
-            }
-        } while (number != -1);
-        if (count > 0)
+        int x;
+        double sum = 0;
+        int cnt = 0;
+        int[] numbers = new int[100];
+        x = in.nextInt();
+        while ( x != -1)
         {
-            System.out.println("average"+(double)sum/count);
+            numbers[cnt] = x;
+            sum += x;
+            cnt ++;
+            x = in.nextInt();
+        }
+        if (cnt >0)
+        {
+            double average = sum/cnt;
+            for (int i =0;i<cnt;i++)
+            {
+                if (numbers[i] > average)
+                {
+                    System.out.println(numbers[i]);
+                }
+            }
+        }
+        System.out.println(sum/cnt);
+
         }
 
     }
-}
