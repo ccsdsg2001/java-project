@@ -9,7 +9,7 @@ public class 素数和 {
         boolean flag;
         n = in.nextInt();
         m = in.nextInt();
-        begin: for (int i = 2;; i++)
+        begin: for (int i = 2;;i++ )
         {
             flag = true;
             for (int j = 2; j <= Math.sqrt(i); j++)
