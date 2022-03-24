@@ -16,6 +16,7 @@ public class 最大公约数 {
             }
         }
         System.out.println(gcd);
+
     }
 }
 //辗转相除法
