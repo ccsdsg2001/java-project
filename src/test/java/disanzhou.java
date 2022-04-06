@@ -3,7 +3,7 @@ package test.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class disanzhou {
+public class disanzhou  {
     ArrayList<String> name =new ArrayList<String>();
     ArrayList<Integer> integers =new ArrayList<Integer>();
     public void add(String s)
