@@ -23,6 +23,9 @@ public class excepti {
             System.out.println(e.getMessage());
             e.printStackTrace();
             throw e;
+        }catch (Exception e)
+        {
+            System.out.println();
         }
 
     }
