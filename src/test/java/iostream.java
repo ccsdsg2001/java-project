@@ -10,6 +10,15 @@ public class iostream {
         }
             try {
                 DataOutputStream fi =new DataOutputStream(new BufferedOutputStream(new FileOutputStream("a.txt")));
+                PrintWriter out =new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream("test.txt"))));
+                BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("E:\\si\\stu.java")));
+                String line;
+                while ((line =input.readLine()) != null){
+                    System.out.println(line);
+                }
+                int te = 2324;
+                out.println(te);
+                out.close();
                 int i = 0xcafebebe;
                 fi.writeInt(i);
                 fi.close();

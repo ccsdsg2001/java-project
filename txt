@@ -248,3 +248,24 @@ FileinputStream,FileoutputStream 对文件作读写操作，实际工程中很�
 流过滤器
 以一个介质流对象为基础层层构建过滤器流，最终形成的流对象能在数据的输入输出过程中，逐层使用过滤器流的方法来读写数据
 Data DatainputStream DataoutputStream 用以读写二进制方式表达的基本数据类型的数据
+文本输入输出
+Reader/Writer 二进制数据采用inputStream/outputstream 文本数据采用Reader/Writer
+在流上建立文本处理 printWriter pw = new printwriter（new bufferedwriter（new outputStreamwriter（new FileoutputStream（））
+Reader 常用的时BUFFEREDReader: readline（）
+LINENUMBERREADER 可以得到行号：getlinenumber（）
+FILEREADER：inputStreamReader类的子类，所有方法都从父类中继承而来
+FileReader（File file） 在给定从中读取数据的File的情况下创建一个新的FileReader
+FileReader（String Filename） 在给定从中读取数据的文件名情况下创建一个新FileReader
+fileREADER不能指定编码转换方式
+汉字编码
+inputStreamReader(inputstream in) 创建一个使用默认字符集的inputSTREmreader
+inputStreamReader(inputstream in，Charset cs) 创建使用给定字符集的inputstreamreader
+inputStreamReader(inputstream in，CharsetDecoder dec) 创建使用给定字符集解码器的inputstreamreader
+inputStreamReader(inputstream in，String charsetName) 创建使用指定字符集的 inputstreamreader
+数据是二进制的 用InputSream 表达的是文本 用Reader 否则用Scanner
+
+流的应用
+阻塞/非阻塞
+read（）函数是阻塞的，在读到所需的内容之前会停下来等。使用read（）的更高级的函数 都是这样
+常用单独线程来做socket读的等待，或使用nio的channel机制
+对于socket可以设置SO时间 setsoTINEout（INT timeout）
