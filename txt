@@ -269,3 +269,6 @@ inputStreamReader(inputstream in，String charsetName) 创建使用指定字符�
 read（）函数是阻塞的，在读到所需的内容之前会停下来等。使用read（）的更高级的函数 都是这样
 常用单独线程来做socket读的等待，或使用nio的channel机制
 对于socket可以设置SO时间 setsoTINEout（INT timeout）
+
+Maven构建工具
+由于jar包添加麻烦或工作量大。可以自动帮程序员下载第三方库（jar），完成整个项目编译（调用javac.exe），完成整个项目单元测试流程（调用junit工具），完成项目打包（调用jar.exe)
