@@ -320,3 +320,23 @@ ResourceBundle类
 根据Locale要求，加载语言文件。存储语言集合中所有K-V对。getString返回对应的Value。根据key找value的查找路径。
 Locale：由语言和国家/地区组合起来的。所有的PROPERTIES文件形成一个树。指定Locale后，ResourceBundle就形成一个树：先找到第一个节点文件（搜索路径），将该节点所有父节点文件全部加载。根据所找到的文件内容和KeY,返回相应的值
 其他国际化：日期/时间国际化DateTimeFormatter和Locale的结合。数字/金融国际化.NumberFORmat和Locale结合
+
+Java高级字符串处理
+正则表达式：用事先定义好的一些特定字符及特定字符的集合，组成一个“规则字符串”，作用：测试字符串内的模式，识别替换文本。提取文本。正则表达式独立于特定语言。
+Java.util.regex包：-pattern正则表达式的编译显示，–Pattern 正则表达式的编译表示
+• compile 编译一个正则表达式为Pattern对象
+• matcher 用Pattern对象匹配一个字符串，返回匹配结果
+–Matcher
+• Index Methods(位置方法) // start(), start(int group), end(), end(int group)
+• Study Methods(查找方法) // lookingAt(), find(), find(int start), matches()
+• Replacement Methods(替换方法) //replaceAll(String replacement
+字符串和集合互转
+–[1,2,3], “1,2,3”
+• 字符串转义
+–对关键字符转义
+• 变量名字格式化
+–名字驼峰命名
+• 字符串输入流
+–将字符串转为一个输入流
+–输入流可以定义为Scanner，这是Online Judge的实现原理
+
