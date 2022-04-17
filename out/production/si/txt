@@ -248,3 +248,67 @@ FileinputStream,FileoutputStream 对文件作读写操作，实际工程中很�
 流过滤器
 以一个介质流对象为基础层层构建过滤器流，最终形成的流对象能在数据的输入输出过程中，逐层使用过滤器流的方法来读写数据
 Data DatainputStream DataoutputStream 用以读写二进制方式表达的基本数据类型的数据
+文本输入输出
+Reader/Writer 二进制数据采用inputStream/outputstream 文本数据采用Reader/Writer
+在流上建立文本处理 printWriter pw = new printwriter（new bufferedwriter（new outputStreamwriter（new FileoutputStream（））
+Reader 常用的时BUFFEREDReader: readline（）
+LINENUMBERREADER 可以得到行号：getlinenumber（）
+FILEREADER：inputStreamReader类的子类，所有方法都从父类中继承而来
+FileReader（File file） 在给定从中读取数据的File的情况下创建一个新的FileReader
+FileReader（String Filename） 在给定从中读取数据的文件名情况下创建一个新FileReader
+fileREADER不能指定编码转换方式
+汉字编码
+inputStreamReader(inputstream in) 创建一个使用默认字符集的inputSTREmreader
+inputStreamReader(inputstream in，Charset cs) 创建使用给定字符集的inputstreamreader
+inputStreamReader(inputstream in，CharsetDecoder dec) 创建使用给定字符集解码器的inputstreamreader
+inputStreamReader(inputstream in，String charsetName) 创建使用指定字符集的 inputstreamreader
+数据是二进制的 用InputSream 表达的是文本 用Reader 否则用Scanner
+
+流的应用
+阻塞/非阻塞
+read（）函数是阻塞的，在读到所需的内容之前会停下来等。使用read（）的更高级的函数 都是这样
+常用单独线程来做socket读的等待，或使用nio的channel机制
+对于socket可以设置SO时间 setsoTINEout（INT timeout）
+
+Maven构建工具
+由于jar包添加麻烦或工作量大。可以自动帮程序员下载第三方库（jar），完成整个项目编译（调用javac.exe），完成整个项目单元测试流程（调用junit工具），完成项目打包（调用jar.exe)
+maven是一个构建工具，自动下载中心仓库的jar文件，存在本地进行管理，编译，测试，运行和打包发布java项目
+Maven构建生命周期：清理，编译，测试，打包，安装，部署
+
+单元测试和JUNIT
+测试
+软件测试的经典定义：在规定的条件下对程序进行操作，以发现程序错误，并对其能满足设计要求进行评估的过程
+
+单元和集成测试
+单元测试，对软件中的最小可测试单元进行检测和验证，通常是一个函数/方法。单元测试是已知代码结构进行的测试，属于白盒测试。
+集成测试是多个单元相互作用，形成一个整体，对整体协调性进行测试。一般从构成系统的最小单元开始，持续推进到单元之间的接口直到集成为一个完成的软件系统为止。
+
+白盒和黑盒测试
+白盒测试，全面了解程序内部逻辑结构，对所有的逻辑路径进行测试，一般由程序员完成。
+黑盒测试，在完全不考虑此程序内部结构和内部特性的情况下，检查程序功能是否按照需求规格说明书的规定正常使用，一搬由独立的使用者完成。
+
+自动和手动测试
+自动测试：用程序批量反复测试程序，并可自动检查程序结果是否满足预定的要求
+手动测试：手动执行程序，手动输入所需要的参数，手动检查程序结果是否满足预定的要求
+
+回归测试
+回归测试：修改旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误
+回归测试在整个软件的是过程中占有很大比重。软件快速迭代开发过程中，新版本的连续发布使得回归测试进行的更加频繁
+测试策略
+基于main函数的策略
+优点：简单 缺点：无法自动判断被测对象的行为是否符合预期。main方法需要添加大量的代码。分散程序员在开发时的关注点
+基于自动化测试框架的策略
+初始化，输入测试数据执行被测代码，获取系统实际结果，比较结果是否一致，输出测试结论
+JUnit：一个Java语言的单元测试框架
+import static：导入某一个类的所有静态方法；import是导入一个类或者几个类
+
+高级文本处理
+字符编码:字符，ASCII码：用一个字节来存储a-z，A-Z，0-9和一些常用符号。回车键（13，00001101），0（48，00110000），A（65，01000001），a（97，01100001）
+ASCII编码采用1bit，8bit，最多256个字符
+中文编码：GB2312,GBK,GB18030,BIG5,GB18030>GBK>GB2312
+UNICODE编码：存储全世界所有字符。编码方案：UTF-8，兼容ASCII，变长。UTF-16.用2-4个字节存储所有字符。UTF-32，用32Bits存储所有字符
+JAVA的字符编码：源文件编码：采用UTF-8编码。程序采用UTF-16编码存储所有字符。和\
+
+Java国际化编程
+多语言版本的软件：一套软件，多个语言包。根据语言设定，可以切换显示文本。
+Java是第一个设计成支持国际化的编程语言。java.util.ResourceBundle 用于加载一个语言-国家语言包。java.util.Locale定义一个语言-国家

@@ -301,3 +301,22 @@ Maven构建生命周期：清理，编译，测试，打包，安装，部署
 初始化，输入测试数据执行被测代码，获取系统实际结果，比较结果是否一致，输出测试结论
 JUnit：一个Java语言的单元测试框架
 import static：导入某一个类的所有静态方法；import是导入一个类或者几个类
+
+高级文本处理
+字符编码:字符，ASCII码：用一个字节来存储a-z，A-Z，0-9和一些常用符号。回车键（13，00001101），0（48，00110000），A（65，01000001），a（97，01100001）
+ASCII编码采用1bit，8bit，最多256个字符
+中文编码：GB2312,GBK,GB18030,BIG5,GB18030>GBK>GB2312
+UNICODE编码：存储全世界所有字符。编码方案：UTF-8，兼容ASCII，变长。UTF-16.用2-4个字节存储所有字符。UTF-32，用32Bits存储所有字符
+JAVA的字符编码：源文件编码：采用UTF-8编码。程序采用UTF-16编码存储所有字符。和\
+
+Java国际化编程
+多语言版本的软件：一套软件，多个语言包。根据语言设定，可以切换显示文本。
+Java是第一个设计成支持国际化的编程语言。java.util.ResourceBundle 用于加载一个语言-国家语言包。java.util.Locale定义一个语言-国家
+Locale类
+Locale语言，zh，en等。Locale方法：getAvailableLocales()返回所有可用的Locale。getDefault（）返回默认的Locale
+语言文件
+一个properties文件，包含K-V对，每行一个K-V。命名规则：包名+语言+国家地区.properties。存储文件必须是ASCII文件，如果是这以外文件，必须用Unicode的表示。可以用native2ascii.exe进行转码
+ResourceBundle类
+根据Locale要求，加载语言文件。存储语言集合中所有K-V对。getString返回对应的Value。根据key找value的查找路径。
+Locale：由语言和国家/地区组合起来的。所有的PROPERTIES文件形成一个树。指定Locale后，ResourceBundle就形成一个树：先找到第一个节点文件（搜索路径），将该节点所有父节点文件全部加载。根据所找到的文件内容和KeY,返回相应的值
+其他国际化：日期/时间国际化DateTimeFormatter和Locale的结合。数字/金融国际化.NumberFORmat和Locale结合
