@@ -75,5 +75,23 @@ public class disanzhou  {
         }
         System.out.print(main.getint(ref));
     }
+    new test.addsum();
 
+}
+
+class test{
+    public int no;
+    public int num;
+    public void addsum(int i,int j ){
+        System.out.println(i+j);
+    }
+
+    public void get(String ad){
+        System.out.println()
+        ;
+    }
+
+    public void get(String ... st){
+
+    }
 }
