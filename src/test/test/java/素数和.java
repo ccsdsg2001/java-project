@@ -21,7 +21,7 @@ public class 素数和 {
                     break;
                 }
             }
-            if (flag == true)
+             if (flag == true)
             {
                 num++;
                 if(num >= n && num <= m)
