@@ -18,6 +18,11 @@ class student{
         return name.toString();
     }
 }
+
+
+
+
+
 public class socket {
     public static void main(String[] args){
         try {
