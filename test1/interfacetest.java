@@ -6,6 +6,30 @@ public class interfacetest {
         computer computer=new computer();
         printer printer =new printer();
         computer.tran(printer);
+        computer.tran(new printer());//非匿名实现类的匿名对象
+        usb phone =new usb() {//创建了接口的匿名实现类的非匿名对象
+            @Override
+            public void start() {
+
+            }
+
+            @Override
+            public void stop() {
+
+            }
+        };
+        computer.tran(phone);
+        computer.tran(new usb() {//创建了接口的匿名实现类的匿名对象
+            @Override
+            public void start() {
+            }
+
+            @Override
+            public void stop() {
+
+            }
+        });
+
 
 
     }
