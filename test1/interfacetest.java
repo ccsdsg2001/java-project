@@ -45,6 +45,13 @@ class computer{
 interface usb{
     void start();
     void stop();
+
+    public static void se(){
+        System.out.println("helo");
+    }
+    public default void se4(){
+
+    }
 }
 
 class printer implements usb{
