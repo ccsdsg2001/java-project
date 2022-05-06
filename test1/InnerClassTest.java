@@ -1,6 +1,9 @@
 package test1;
 
+
 public class InnerClassTest {
+
+
 }
 
 class person{
