@@ -8,6 +8,8 @@ public class Exceptiontest {
             int num =Integer.parseInt(s2tring);
         }catch (NumberFormatException e){
             System.out.println("cc");
+        }finally {
+            System.out.println("cs");
         }
     }
 
