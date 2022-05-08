@@ -14,3 +14,8 @@ public class Exceptiontest {
     }
 
 }
+class ex{
+    public void method1() throws Exception{
+
+    }
+}
