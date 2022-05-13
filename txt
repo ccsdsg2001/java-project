@@ -433,3 +433,4 @@ Thread常用方法1.start启动当前线程 2.run将创建的线程要执行的�
 
 线程的优先级:1.MAX:10 MIN:1 NORMAL:5
 如何获取和设置当前线程的优先级:getPriority() setPriority()
+高优先级线程抢占低优先级线程cpu的执行权,高优先级线程高概率情况下被执行.
