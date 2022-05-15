@@ -1,3 +1,5 @@
+package test1;
+
 /**
  * @author cc
  * @date 2022年05月15日 13:13
@@ -10,6 +12,11 @@
     public void run() {
         while (true){
             if(ticket>0){
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(getName()+"号为"+ticket);
                 ticket--;
             }else{
