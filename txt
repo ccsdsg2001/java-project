@@ -469,4 +469,100 @@ synchronized(同步监视器){
 summarize:同步方法设计到同步监视器,只是不需要显示声明
 2.非静态的同步方法,同步监视器是this
 静态的同步方法,监视器是当前类本身
-P438
+
+线程的死锁问题
+理解：不同的线程分别占用对方需要的同步资源不放弃，都在等待对方放弃自己需要的同步资源，就形成了线程的死锁
+说明：1.出现死锁后，不会出现异常，不会出现提示，只是所有线程处于阻塞状态，无法继续
+2.使用同步时，避免出现死锁
+解决：1.专门的算法，原则 2。尽量减少同步资源的定义。3.尽量避免嵌套同步
+
+锁
+通过显示定义同步锁对象来实现同步，同步锁使用lock对象充当
+java.util.concurrent.Lock接口是控制多个线程对共享资源进行访问的工具,锁提供了对共享资源的独立访问,每次只能由一个线程对Lock对象加锁,线程开始访问共享资源之前都先获得Lock对象
+ReentrantLock类实现了Lock,拥有与synchronized相同的并发性和内存语义,在实现线程安全的控制中,比较常用的是ReentrantLock
+1.实例化ReentrantLock
+2.调用锁定方法lock()
+3.调用解锁方法:unlock()
+
+synchronized与lock的异同
+解决线程安全问题.不同:synchronized机制在执行完相应的同步代码以后,自动的释放同步监视器
+lock需要手动的启动同步lock(),结束同步也需要手动的实现unlock()
+
+线程的通信
+例子:交替打印
+三个方法:
+1.wait():一旦执行此方法,当前线程就进入阻塞状态,并释放同步监视器
+2.notify():一旦执行此方法,就会唤醒wait的一个线程,如果多个线程被notify,就选择优先级那个
+3.notifyall():唤醒所有被wait的线程
+说明:1.三个方法必须使用在同步代码块或同步方法中
+2.三个方法的调用者必须是同步代码块或同步方法中的同步监视器,否则出现IlleagalMonitorStateException异常
+3.此三个方法都定义在object类中
+
+sleep和wait的异同
+1.相同:都可以使得当前线程进入阻塞状态
+2.不同:1.两个方法声明的位置不同:THread类中sleep(),object类中wait()
+2,调用范围不同:sleep()在任何场景下调用,wait必须在同步代码块或同步方法
+3.sleep不会释放监视器,wait会释放监视器
+
+新增线程接口
+方式三:实现Callable接口
+相比run方法,有返回值.
+方法可以抛出异常
+支持泛型的返回值
+需要借助FutureTask类 Future接口,可以对具体Runnable和callable任务的执行结果进行取消,查询是否完成,获取结果等
+FutrueTask是Futrue接口的唯一实现类
+FutrueTask同时实现了Runnable,Future接口,既可以作为Runnable线程执行,又可以作为Future得到Callable的返回值
+步骤:1.创建一个实现Callable的实现类
+2.实现call方法,将此线程需要执行的操作声明在call()中
+3.创建Callable接口实现类的对象
+4.将此Callable接口实现类的对象作为传递到FutureTask构造器中,创建futuretask的对象
+5.将futuretask的对象作为参数传递到thread类的构造器中,创建thread对象,并调用start
+6.获取callable中call方法的返回值
+
+方式4:使用线程池
+思路:提前创建好多个线程,放入线程池中,使用时直接获取,使用完放回池中,可以避免频繁创建销毁,实现重复利用
+corePoolSize:线程池的大小  maxmunPoolSzie:最大线程数 keepAliveTime:线程没有任务时最多保持多长时间后终止
+1.提供指定线程数量的线程池        ExecutorService Service = Executors.newFixedThreadPool(10);
+2.执行指定线程的操作,需要提供实现Runnable接口或Callablle接口实现类的对象
+Service.execute(new NumberThread());//适合使用于runnable
+//        Service.submit();//适合使用于callable
+3.关闭连接池 Sevice.shutdown();
+PS:管理线程池  ThreadPoolExecutor service1=(ThreadPoolExecutor) Service;
+                service1.setCorePoolSize(15);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
