@@ -540,12 +540,39 @@ String是一个final类，代表不可变的字符序列,不可被继承
 6.当对现有的字符串进行连接操作时,也需要重新指定内存区域的赋值,不能使用原有的值
 7.当调用String的replace()方法修改指定字符或字符串时,也需要重新指定内存区域
 
-P453
+String实例化方式
+1.通过字面量定义的方式 数据JavaEE声明在方法区中的字符串常量池中
+2.通过new+构造器的方式 数据在堆空间中开辟空间以后对应的值
+常量与常量的拼接结果就在常量池中，且常量池中不会存在相同内容的常量
+只要其中一个是变量，结果就在堆中，如果拼接的结果调用intern方法，返回值就在常量池中
 
+String常用方法
+length():返回字符串
+charat():返回某处字符
+isEmpty：判断是否为空
+tolower（upper）case：将字符串转换为大小写
+trim():忽略字符串的前端后端的空白
+equal:比较内容是否相等
+concat:将指定字符串连接到结尾
+compareTo:比较两个字符串大小
+substring:返回一个新的字符串,可选取内容
+endwith:测试字符串是否已指定后缀结束
+startswith:字符串是否以指定前缀结束
+contains:检测是否包含字符串,如有返回true
+indexof:返回子字符串在字符串第一次出现的索引
+lastindexof:返回子字符串在字符串最后一次出现的索引
+replace:根据正则表达式替换指定字符
+matches:根据正则表达式匹配指定字符
+spilt:根据正则表达式分割指定字符
 
-
-
-
+String类与其他结构之间转换
+String---> 基本数据类型,包装类:调用包装类的静态方法:parseXXX(str)
+基本数据类型,包装类-->String:调用String重载方法valueof(xxx)
+String-->char[]之间转换:调用String的toCharArray()
+Char[]-->String:调用String的构造器
+String-->byte[]之间转换:调用String的getBytes()
+byte[]-->String:调用String的构造器
+编码:字符串-->字节  解码:字节-->字符串
 
 
 
