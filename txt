@@ -574,14 +574,30 @@ String-->byte[]之间转换:调用String的getBytes()
 byte[]-->String:调用String的构造器
 编码:字符串-->字节  解码:字节-->字符串
 
+StringBuffer，StringBuilder类
+String：不可变的字符序列，底层使用char[]数组存储
+StringBuffer：可变的字符序列;线程安全，效率低;new对象时new char[] value[16];底层创建了一个char型数组.new StringBuffer=new char["abc".length]
+StringBuilder:可变的字符序列 线程不安全，效率高
+扩容问题:默认情况下,扩容为原来容量的2倍+2,同时将原有数组中的元素赋值到新的数组
+常用方法:
+append:用于字符串拼接
+delete:删除指定位置的内容
+replace:把位置替换为str
+insert:在指定位置插入
+reverse:把当前字符序列逆转
 
-P465
+日期时间API
+system类中方法currentTimeMills(),返回当前时间与1970年1月1日之间以毫秒为单位的时间差,称为时间戳
+Java.util.Date类
+1.两个构造器的使用(1)Date():创建一个对应当前时间的Date对象 (2)new Date(long Date);
+2.两个方法使用:tostring()显示当前年月日时分秒
+gettime():获取当前对象对应的毫秒数
 
+java.sql.date对应着数据库中日期类型的变量
+将java.util.Date对象转换为java.sql.Date对象
+Date new一个date 再将sql.date的对象强制转为为(java.sql.Date)date
 
-
-
-
-
+P471
 
 
 
