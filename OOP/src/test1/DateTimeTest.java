@@ -1,5 +1,7 @@
 package test1;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Date;
  * @date 2022年05月24日 22:36
  */
 public class DateTimeTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         long time =System.currentTimeMillis();
         System.out.println(time);
 
@@ -22,5 +24,12 @@ public class DateTimeTest {
 
 //        将java.util.Date对象转换为java.sql.Date对象
 
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        Date date3 = new Date();
+        simpleDateFormat.format(date3);
+
+        String srt="";
+        simpleDateFormat.parse(srt);
     }
 }

@@ -49,6 +49,19 @@ public class StringTest {
 
     }
 
+    //指定字符串反转
+    public  String reverse(String srt,int startindex,int endindex){
+        char[] chars = srt.toCharArray();
+        for(int x=startindex,y=endindex;x<y;x++,y--){
+            char temop=chars[x];
+            chars[x]=chars[y];
+            chars[y]=temop;
+        }
+
+        return new String(chars);
+
+    }
+
 }
 
 

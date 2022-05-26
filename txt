@@ -597,11 +597,13 @@ java.sql.date对应着数据库中日期类型的变量
 将java.util.Date对象转换为java.sql.Date对象
 Date new一个date 再将sql.date的对象强制转为为(java.sql.Date)date
 
-P471
+SimpleDateFormat的使用
+1.两个操作：格式化：日期——>字符串 format方法
+解析：格式化逆过程 字符串-->日期 parse方法
+2.SimpleDateFormat的实例化,调用方法
+带参的构造器格式(yyyy-MM-dd hh:mm:ss)
 
-
-
-
+p483
 
 
 
