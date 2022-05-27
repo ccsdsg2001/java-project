@@ -603,17 +603,44 @@ SimpleDateFormat的使用
 2.SimpleDateFormat的实例化,调用方法
 带参的构造器格式(yyyy-MM-dd hh:mm:ss)
 
-p483
+cALENDA日历类
+1.实例化
+（1）创建其子类（GregorianCalendar）的对象
+（2）调用其静态方法getInstance（）
+2.常用方法
+get（）
+       calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
+set（）
+calendar.set(Calendar.DAY_OF_YEAR, 22);
+add（）
+calendar.add(Calendar.DAY_OF_YEAR,3);
+gettime（）日历类--》Date
+sertime（）Date--》日历类
 
+LocalDate，LocalTime，LocakDateTime的使用
+ 方法：       now（）：获取当前日期，时间，日期+时间
+        LocalDate now = LocalDate.now();
+        LocalTime now1 = LocalTime.now();
+        LocalDateTime now2 = LocalDateTime.now();
+方法：of():设置指定的年，月，日，时，分，秒
+LocalTime of = LocalTime.of(12, 30);
+方法：getxxx（）；获取当前属性的值
+withDayofMouth（）；修改时间，体现不可变性
+plusxxx（）；加属性的值  minusxxx（）：减属性的值
 
+Instance类的使用
+now（）：放回utc时区的对象. ofHours():添加时区偏移量 toEpochMilli（）：获取毫秒数从1970年1月1日开始
 
+DateTimeFormatter类：格式化或解析日期，时间
+方式一：预定义的日期格式
+                    DateTimeFormatter isoLocalDateTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+                    String s1=isoLocalDateTime.format(of)
+二：本地化相关格式：ofLocalLizedDate（）
+三：自定义的格式 ofPattern（“yyyy-MM-dd hh：mm：ss）
+格式化
 
-
-
-
-
-
-
+p490
 
 
 

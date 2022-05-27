@@ -2,6 +2,9 @@ package test1;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -30,6 +33,35 @@ public class DateTimeTest {
         simpleDateFormat.format(date3);
 
         String srt="";
-        simpleDateFormat.parse(srt);
+//        simpleDateFormat.parse(srt);
+
+
+        Calendar calendar=Calendar.getInstance();
+        calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
+
+        calendar.set(Calendar.DAY_OF_YEAR, 22);
+        calendar.add(Calendar.DAY_OF_YEAR,3);
+
+        LocalDate now = LocalDate.now();
+        LocalTime now1 = LocalTime.now();
+        LocalDateTime now2 = LocalDateTime.now();
+
+        System.out.println(now);
+        System.out.println(now1);
+        System.out.println(now2);
+
+        LocalTime of = LocalTime.of(12, 30);
+        System.out.println(of);
+
+        Instant now3 = Instant.now();
+        System.out.println(now3);
+        OffsetDateTime offsetDateTime = now3.atOffset(ZoneOffset.ofHours(8));
+        System.out.println(offsetDateTime);
+
+
+        DateTimeFormatter isoLocalDateTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        String s1=isoLocalDateTime.format(of);
+        System.out.println(s1);
     }
 }
