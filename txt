@@ -640,10 +640,14 @@ DateTimeFormatter类：格式化或解析日期，时间
 三：自定义的格式 ofPattern（“yyyy-MM-dd hh：mm：ss）
 格式化
 
-p490
+Java比较器
+Java中对对象中进行排序，实现两个接口中的一个：Comparable或Comparator
+1.Comparable接口使用 自由排序
+(1)像Sring,包装类实现类Comparable接口,重写了compareTo()方法,给出了两个比较大小
+(2)重写compareTo()的规则:
+如果当前对象this大于形参对象obj,则返回正整数
+如果当前对象this小于形参对象obj,则返回父整数
+如果当前对象this等于形参对象obj,则返回0
+(3)对于自定义类,如果需要排序,可以实现compale接口,重写compareto()方法
 
-
-
-
-
-
+p493
