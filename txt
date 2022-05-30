@@ -649,5 +649,15 @@ Java中对对象中进行排序，实现两个接口中的一个：Comparable或
 如果当前对象this小于形参对象obj,则返回父整数
 如果当前对象this等于形参对象obj,则返回0
 (3)对于自定义类,如果需要排序,可以实现compale接口,重写compareto()方法
+2.定制排序：java.util.comparator
+当元素类型没有实现Comparable接口又不方便修改代码,或者实现了接口排序规则不适合当前规则,可以使用Comparator接口
+重写Compare(obj ob1,obj ob2),比较o1和o2大小
+返回正整数,表示o1大于o2
+返回0,表示相等
+返回负整数,表示o1小于o2
 
-p493
+两者对比:
+Comparable接口一旦一定,任何位置都可以比较大小
+comparator可以临时性的比较
+
+p498
