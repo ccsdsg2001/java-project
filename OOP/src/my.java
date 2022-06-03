@@ -1,7 +1,7 @@
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({CON})
+@Target(ElementType.ANNOTATION_TYPE)
 @Documented
 @Inherited
 public @interface my {
