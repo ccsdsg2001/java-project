@@ -724,17 +724,42 @@ java集合可分为Collection和map两种体系
     ---ArrayList,LinkedList,Vector
 ----Set:元素无序,不可重复的集合.
     ---HashSep,LinkedHashSet,TreeSe.t
-2.Map接口:双列数据,保存具有映射关系"Key-value对"的集合
+2.Map接口:双列数据,保存具有映射关系"Key-value对"的集合`````
 ----HashMap,LinkedHashMap,TreeMap,Hashtable,Properties
 
-Collection接口中的方法使用
+Collection接口中的方法使用:向Collection接口的实现类中的对象中添加数据obj时,要求obj所在类重写equals()
 add(Object e):将元素e添加到集合coll中
 size():获取添加的元素的个数
 addAll(collection coll1):将coll集合中的元素添加到当前的集合中
 clear():清空集合元素
 isEmpty():判断当前集合是否为空
+contains(Object obj):判断当前集合中是否包含obj;判断时调用obj中的equal方法.
+containsAll(Collection coll1):判断形参coll1中的所有元素是否都存在当前集合中
+remove(Object obj):从当前集合中移除obj元素
+removeAll(Collection coll1):从当前集合中移除coll1中所有的元素
+retainAll(Collection coll1):获取当前集合和coll1集合的交集,并返回给当前集合
+equals(Object obj):判断当前集合和形参是否相同,如相同,则返回true
+hashCode():返回当前对象的哈希值
+集合-->数组:toArray()
+数组-->集合:调用Arrays类的静态方法asList()
 
-P520
+iterator():返回Iterator接口的实例,用于遍历集合元素.
+集合元素的遍历操作，使用迭代器Iterator接口
+报异常:nosuchElementException()异常
+内部的方法:hashNext和next();遍历元素
+内部定义了remove(),可以在遍历的时候,删除集合中的元素,此方法不同于集合中remove()
+如果还未调用next()或在上一次调用next方法之后已经调用了remove方法,在调用remove都会报IllegalStateException
+for-each循环(集合元素的类型 局部变量:集合对象);内部调用了迭代器
+
+
+p528
+
+
+
+
+
+
+
 
 
 
