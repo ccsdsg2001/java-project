@@ -751,11 +751,24 @@ iterator():返回Iterator接口的实例,用于遍历集合元素.
 如果还未调用next()或在上一次调用next方法之后已经调用了remove方法,在调用remove都会报IllegalStateException
 for-each循环(集合元素的类型 局部变量:集合对象);内部调用了迭代器
 
+List接口
+----List:元素有序,可重复的集合."动态数组"
+---ArrayList：作为List接口的主要实现类，线程不安全的，效率高。底层使用Object[]ElementData存储
+---LinkedList:底层使用双向链表存储,对于频繁的插入和删除操作,效率比ArrayList高;
+---Vector：作为List接口的古老实现类，线程安全的，效率低。底层使用Object[]ElementData存储
+三者的异同
+同：都实现了List接口，存储数据的特点相同：存储有序，可重复的数据
 
-p528
-
-
-
+ArrayList的底层源码分析:
+java7的情况如下:
+ArrayList list=new ArrayList();底层创建了长度是10的object[]数组
+List.add(123);//ElementData[0]=new Integer(123);如果此次的添加导致底层数组容量不够,则扩容
+默认情况下,扩容为原来容量的1.5倍,同时将原有数组中的数据复制到新的数组中
+建议开发中使用带参的构造器ArrayList list=new ArrayList(int capacity);
+JDK8的情况如下:
+ArrayList list=new ArrayList();//底层Object[]elementData初始化为{},并没有创建为10的数组
+List.add(123);//第一次调用add时,底层才创建了长度为10的数组,并将数据添加到element中
+jdk7中的创建对象类似于单例的饿汉式,而jdk8中的对象创建类似于单例的懒汉式,延迟了数组的创建,节省内存
 
 
 
