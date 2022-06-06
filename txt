@@ -770,6 +770,7 @@ ArrayList list=new ArrayList();//底层Object[]elementData初始化为{},并没�
 List.add(123);//第一次调用add时,底层才创建了长度为10的数组,并将数据添加到element中
 jdk7中的创建对象类似于单例的饿汉式,而jdk8中的对象创建类似于单例的懒汉式,延迟了数组的创建,节省内存
 
+p530
 
 
 
