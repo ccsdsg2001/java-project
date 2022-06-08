@@ -770,11 +770,34 @@ ArrayList list=new ArrayList();//底层Object[]elementData初始化为{},并没�
 List.add(123);//第一次调用add时,底层才创建了长度为10的数组,并将数据添加到element中
 jdk7中的创建对象类似于单例的饿汉式,而jdk8中的对象创建类似于单例的懒汉式,延迟了数组的创建,节省内存
 
-p530
+LinkedList的源码分析：
+LinkedList list=new LinkedList();内部声明了Node类型的first和last属性,默认值为null
+list.add();//将数据封装到node中,创建了Node对象,体现了双向链表的说法
+Node定义为:   private static class Node<E> {
+                E item;
+                Node<E> next;
+                Node<E> prev;
+
+                Node(Node<E> prev, E element, Node<E> next) {
+                    this.item = element;
+                    this.next = next;
+                    this.prev = prev;
+                }
+            }
+
+Vector源码的分析:
+通过Vector()构造器创建对象时,底层都创建了长度为10的数组,在扩容方面,默认扩容为原来的数组长度的2倍
+
+List接口中的常用方法:
+1.void add(int index,Object ele):在index位置插入ele元素
+2.boolean addAll(int index,object ele):从index位置开始将eles中所有元素添加进来
+3.get(int index):返回所在index位置的元素
+4.int indexof(Object obj):返回obj在集合中首次出现的位置,如果不存在,则返回-1
+5.int lastindexof(Object obj):返回obj在集合中最后出现的位置,如果不存在,则返回-1
+6.remove(Object obj):从当前集合中移除obj元素,并返回元素
+7.Object set(int index,Object ele):设置指定的index位置的元素为ele
+8.List sublist(int fromIndex,int toIndex):返回从fromIndex到toIndex位置的左闭右开的集合
 
 
 
-
-
-
-
+p533
