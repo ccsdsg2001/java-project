@@ -797,7 +797,61 @@ List接口中的常用方法:
 6.remove(Object obj):从当前集合中移除obj元素,并返回元素
 7.Object set(int index,Object ele):设置指定的index位置的元素为ele
 8.List sublist(int fromIndex,int toIndex):返回从fromIndex到toIndex位置的左闭右开的集合
+总结常用方法：
+增：add(Object obj)
+删:remove(int index)/remove(Object obj)
+改:set(int index,ele)
+查:get(int index)
+插:add(int index,ele)
+长度:size()
+遍历:1.Iterator迭代器
+2.增强for循环
+3.普通循环
+
+----Set:元素无序,不可重复的集合.
+    ---HashSet:作为Set接口的主要实现类;线程不安全的;可以存储null值
+        ----LinkedHashSet:作为HashSet的子类;遍历其内部数据时,可以按照添加的顺序遍历
+    ----TreeSet:可以按照添加对象的指定属性,进行排序
+1.Set接口中没有额外定义新的方法,使用的都是Collection中声明过的方法
+2.无序性:不等于随机性.存储的数据在底层数组中并非按照数组索引的顺序添加.而是根据数组的哈希值决定的
+3.不可重复性:保证添加的元素按照equals()判断时,不能返回true.即相同的元素只能添加一个
+
+二.添加元素的过程:以HashSet为例:
+底层容量为16,当使用率超过0.75,就会扩大容量为原来的2倍
+向HashSet中添加元素a,首先调用元素a所在类的hashCode()方法,计算元素a的哈希值,
+此哈希值接着通过某种算法计算出HashSet底层数组中的存放位置(即为:索引位置),判断数组在此位置上是否已经有元素
+如果此位置上没有其他元素,则元素a添加成功---1
+如果此位置上有其他元素b(或以链表形式存在的多个元素),则比较元素a,b的hash值
+如果hash值不相同,则元素a添加成功---2
+如果hash值相同,则需要调用元素a所在类的equlas()方法;
+  equlas()返回true,添加失败;如返回false,则添加成功----3
+对于2和3而言:元素a与已经存在指定索引位置上数据以链表的方式存储
+jdk 7:元素a放到数组中,指向原来的元素
+jdk8:原来的元素在数组中,指向元素a
+HashSet底层:数组+链表
+
+p538
 
 
 
-p533
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

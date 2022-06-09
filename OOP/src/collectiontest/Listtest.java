@@ -2,6 +2,7 @@ package collectiontest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,11 +27,20 @@ public class Listtest {
 
         //int indexof(Object obj):返回obj在集合中首次出现的位置,如果不存在,则返回-1
         System.out.println(list.indexOf(123));
+        System.out.println("----");
         System.out.println(list.remove(1));
         //Object set(int index,Object ele):设置指定的index位置的元素为ele
         list.set(1,"aa");
         System.out.println(list);
         //List sublist(int fromIndex,int toIndex):返回从fromIndex到toIndex位置的左闭右开的集合
         System.out.println(list.subList(1, 3));
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
     }
 }
