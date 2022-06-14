@@ -843,16 +843,53 @@ TreeSet的使用
 3.自然排序中,比较两个对象中是否相同的标准为:compareTo()返回0,不再是equals()
 4.定制排序中,标准为:Compare返回0,不再是0
 
-p544
+Map接口
+Map：双列数据，存储Key-value对的数据
+    ----HashMap：作为Map的主要实现类；线程不安全的，效率高；存储null的Key和Value
+        ----LinkedHashMap:保证在遍历元素时，按照添加顺序实现遍历；原因：在原有HashMap基础上，添加了一对指针，指向前一个元素和后一个与元素
+        对于频繁的遍历操作，此类效率高于HashMap
+    ----TreeMap：按照添加的key-value对进行排序，实现排序遍历，此时考虑key的自然排序和定制排序
+                底层使用红黑树，
+    ----Hashtable：作为古老的实现类；线程安全，效率低；不能存储null的key和Value
+        ----Properties：常用来处理配置文件。KEY和VALUE 都是String类型
 
+HashMap的底层：数组+链表（jdk7之前）
+               数组+链表+红黑树（jdk8）
 
+二.Map结构的理解:
+Map中的key:无序的,不可重复的,使用set存储所有的key --->key所在的类要重写equals()和HashCode()(以HashMAp为例)
+Map中的Value:无序的,可重复的,使用Collection存储所有的Value -->value所在的类要重写equals()
+一个键值对:key-value构成一个Entry对象
+Map中的entry:无序的,不可重复的的,使用set存储所有的entry
 
+HashMao的底层实现原理,以jdk7为例
+HashMap map=new HashMap();
+在实例化后,底层创建了长度是16的一维数组Entry[] table
+...可能已经执行过多次put...
+map.put(k1,vak1);
+首先,调用key1所在类的hashcode()计算key1哈希值,经过某种算法计算以后,得到Entry数组中的存放位置
+如果此位置上数据为空,此时k1--val1添加成功
+如果此位置上数据不为空,(意味着此位置上村子啊一个或多个数据),比较key1和已经存在一个或多个数据的哈希值:
+如果Key1的哈希值与此位置已经存在的哈希值不相同,此时添加成功  ---情况2
+..............和已经存在的某一个数据的哈希值相同,调用equals()方法,比较
+        如果equals返回False,此时添加成功    ----情况3
+        如果返回True,使用value替换相同的value值
+关于2和3:此时key1-value1和原来数据以链表方式存储
+在添加过程中,默认扩容方式:扩容为原来的2倍,并将原来数据复制过来
 
+JDK8
+1.new HashMap():底层没有创建一个长度为16的数组
+2.底层数组是:Node[] 而非Entry[]
+3.首次调用put方法,创建长度16的数组
+4.底层结构:数组+链表+红黑树
+当数组某一个索引位置上的元素以链表形式存在数据个数>8且长度>64时,此索引位置上所有数据改为红黑树存储
+DEFAULT_INITIAL_CAPACITY:HashMap的默认容量 16
+DEFAULT_LOAD_FACTOR:默认加载因子:0.75
+threshold:扩容的临界值,=容量*填充因子:16*0.75=12
+TREEIFY_THRESHOLD:Bucket中链表长度大于该默认值,转化为红黑树:8
+MIN_TREEIFY_CAPACITY:桶中的node被树化时最小的hash表容量64
 
-
-
-
-
+P554
 
 
 
