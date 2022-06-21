@@ -916,10 +916,11 @@ Set keySet():返回所有key构成的Set集合
 Collection values():返回所有value构成的Collection集合
 Set entrySet():返回所有key-value对构成的set集合
 
-p557
+Treemap两种添加方式的使用
+向Treemap中添加key-value，要求key是由同一个类创建的对象
+按照key进行排序：自然排序，定制排序
 
-
-
+p558
 
 
 

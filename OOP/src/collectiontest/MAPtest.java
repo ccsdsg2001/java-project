@@ -50,5 +50,15 @@ public class MAPtest {
 
     }
 
+    @Test
+    public void test(){
+        TreeMap map = new TreeMap(new Comparator(){});
+        map.put("AA", 123);
+        map.put("bb", 1223);
+        map.put("vv", 1423);
+        map.put("cc", 1523);
+
+    }
+
 
 }
