@@ -920,8 +920,38 @@ Treemap两种添加方式的使用
 向Treemap中添加key-value，要求key是由同一个类创建的对象
 按照key进行排序：自然排序，定制排序
 
-p558
+Map实现类之五：Properties
+Properties类是Hashtable得子类，该对象用于处理属性文件
+Properties里得key和value都是字符串类型
+存取数据时，建议使用setProperty（String key，String value）方法和getProperty（String key）方法
 
+Collections工具类：操作Collection和map的工具类
+方法：1.reverse(list):反转List中元素的顺序
+2.shuffle(List):对list集合中元素进行随机排序
+3.sort(List):根据元素的自然顺序对指定的List集合元素按升序排序
+4.sort(List,Comparator):根据指定的Comparator产生的顺序对list集合元素进行排序
+5.swap(List,int,int):将指定list集合中的i处元素和j处元素进行交换
+6.Object max(Collection):根据元素的自然顺序,返回给定集合中的最大元素
+7.Object max(Collection,Comparator):根据Comparator指定的顺序,返回给定集合中的最大数
+8.Object min(Collection)
+9.Object min(Collection,Comparator)
+10.int frequency(Collection,Object):返回指定集合中的指定元素的出现次数
+11.void copy(List dest,List src):将src中的内容复制到dest中
+12.boolean replaceAll(List list,Object oldVal,Object newVal):使用新值替换List中的老值\
+Collections类中提供了多个synchronizedXxx()方法,该方法可使指定集合包装称线程同步的集合,从而可以解决多线程并发访问集合的线程安全问题
 
+泛型
+JDK1.5之前只能把元素设计成Object，1.5之后使用泛型来解决。
+把元素的类型设计成一个参数，这个类型参数叫做泛型。允许在定义类，接口时通过一个标识表示类中某个属性的类型或者是某个方法的返回值及参数类。在使用时确定。
+2.在集合中使用泛型：（1）集合接口或集合类在jdk5.0时都修改为带泛型的结构（2）在实例化集合类时，可以指明具体的泛型类型（3）指明完以后，在集合类或接口凡是定义类或接口时，内部结构使用到类的泛型都是指明的类型
+比如：add（E e）（4）注意泛型的类型必须是一个类，不能是基本数据类型，需要用到基本数据类型的拿包装类
+（5）如果实例化时，没有指明泛型的类型，默认为Object类型
+3.如何自定义泛型结构:泛型类,泛型接口;泛型方法
+(1)如果定义了泛型类,实例化没有指明类的泛型,则认为此泛型类型为Object类型
+要求:如果大家定义了类是带泛型的,建议在实例化时指明类的泛型
+(2)由于子类在继承带泛型的父类时,指明了泛型类型,则实例化子类对象时,不再需要指明泛型
+(3)泛型不同的引用不能相互赋值(4)泛型要使用就一直用(5)静态方法中不能使用泛型(6)异常类不能是泛型的
+4.子类不保留父类的泛型(1)没有类型擦除 class son<a,b> extends Father (2)具体类型 class son2<A,B> extends Fathe<Integer,String>
+子类保留父类的泛型(1)全部保留 class son3<T1,T2,A,B> extends Father<T1,T2>(2)部分保留 class Son<t2,a,b> extends Father<Integer,T2>
 
-
+p570
