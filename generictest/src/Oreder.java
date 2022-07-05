@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author cc
  * @date 2022年07月04日 15:41
@@ -19,6 +22,11 @@ public class Oreder<T> {
 
     public T getOrdet(){
         return ordet;
+    }
+
+    public <E> List<E> copy(E[] arr){
+        ArrayList<E> list = new ArrayList();
+        return  list;
     }
 
 
