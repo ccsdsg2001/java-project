@@ -969,5 +969,10 @@ JDK1.5之前只能把元素设计成Object，1.5之后使用泛型来解决。
 ? extends A:G<? extends A>可以作为G<a>和G<B>的父类的,其中B是A的子类
 ? super A:G<? super A> 可以作为G<A>和G<B>的父类,其中B是A的父类
 
+File类的使用
+1.File类的一个对象，代表一个文件或文件目录。
+2.File类声明在java.io包下
+File类的实例化 File file =new File(url,"绝对路径","相对路径")
 
-p577
+
+p578
