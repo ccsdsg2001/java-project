@@ -1,9 +1,6 @@
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author cc
@@ -61,4 +58,66 @@ public class IOtest {
 
 
     }
-}
+
+    @Test
+    public void test() {
+        FileWriter fileWriter= null;
+        try {
+            File file=new File("E:\\si\\File3\\hel3lp.txt");
+
+//        2.提供fileWriter的对象，将用于数据写出
+            fileWriter = new FileWriter(file);
+            fileWriter.write("i va\n");
+            fileWriter.write("1321");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(fileWriter!=null) {
+                    fileWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    @Test
+    public void fileiotest() {
+        FileReader fileReader= null;
+        FileWriter fileWriter= null;
+        try {
+            File file=new File("E:\\si\\File3\\hel3lp.txt");
+            File file1=new File("E:\\si\\File3\\hellp.txt");
+
+            fileReader = new FileReader(file);
+            fileWriter = new FileWriter(file1);
+
+            char[] chars = new char[5];
+            int len;
+            while ((len=fileReader.read(chars))!=-1) {
+                    fileWriter.write(chars,0,len);
+                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        }
+
+    }
+
+
