@@ -1025,4 +1025,17 @@ FileInputStream和FileOutputStream的使用
 结论:1.对于文本文件(.txt.java.c,.cpp),使用字符流处理
 2.对于非文本文件(.jpg,.mp3,.MP4,.avi,.doc,等),使用字节流处理
 
-p593
+处理流之一：缓冲流的使用
+1.缓冲流：BufferedInputStream,BufferedOutputStream,BufferedReader,BufferedWriter
+2.作用：提供流的读取，写入的速度。提高读写速度的原因：内部提供了一个缓冲区
+步骤：
+1.造文件File类
+2.造流FileOutStream
+2.1 造缓冲流 BufferOutPutStream
+3.复制的细节：读取，写入
+4.资源关闭：先关闭外层的流，再关闭内层的流。PS：关闭外层流的同时，内层流也会自动的进行关闭，关于内存流的关闭，我们也可以省略。
+PS:Flush()方法：刷新缓冲区。处理流，就是套接已有流的基础上
+缓冲字符流的使用
+BufferedReader,BufferedWriter同上。可以使用匿名类快速创建
+
+p600
