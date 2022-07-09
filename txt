@@ -1075,9 +1075,14 @@ ObjectOutputStream：序列化，保存基本类型数据或对象的机制
 4：序列化机制：对象序列化机制允许把内存中的java对象转换成平台无关的二进制流，从而允许把这种二进制流持久保存在
 磁盘上，或通过网络将这种二进制流传输到另一个网络节点。当其他程序获取了这种二进制流，就可以恢复成原来的java对象
 
-p616
+随机存取文件流RandomAcceseeFile类
+long getFilePointer():获取文件记录指针的当前位置
+void seek(long pos):将文件记录指针定位到pos位置
+1.该类直接继承于java.lang.Object类,实现了DataInput和DataOutPut接口
+2.该类即可以作为一个输入流,也可以作为一个输出流.
+3.如果RandomAccessFile作为输出流时,写出到的文件如果不存在,则在执行过程中自动创建,如果写出的文件存在,则会对原有的文件内容进行覆盖
+4,通过相关的操作,实现RandomAccessFile"插入"数据的效果
 
-
-
+p618
 
 
