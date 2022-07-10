@@ -1089,7 +1089,8 @@ NIO files，path，paths类
 目的：通过网络协议与其他计算机实现数据交换，进行通讯
 1.网络编程中两个主要的问题：（1）如何准确的定位网络上一台或多台主机，定位主机上的特定应用（2）找到主机后如何可靠高效进行数据传输
 2.网络编程中两个要素：（1）IP和端口号 （2） 提供网络通信协议
+3.通信要素一：端口号和IP（1）IP：唯一的标识上的计算机(2)在java中使用InetAddress类代表IP(3)IP分为IPV4和IPV6
+(4)实例化Inetaddress两个常用方法:getByName(String host),getLocalHost,getHostName()/gethostAddress
+端口号与IP地址组合得到一个网络套接字:Socket
 
-p621
-
-
+p623
