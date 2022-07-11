@@ -1093,4 +1093,26 @@ NIO files，path，paths类
 (4)实例化Inetaddress两个常用方法:getByName(String host),getLocalHost,getHostName()/gethostAddress
 端口号与IP地址组合得到一个网络套接字:Socket
 
-p623
+TCP网络编程
+步骤：1.创建Socket对象，指明服务器端的ip和端口号
+2.获取一个输出流，用于输出数据
+3.资源的关闭
+服务器端：1.创建服务器端的ServerSocket，指明自己的端口号
+2.调用accept（）表示接受来自与客户端的socket
+3.获取输入流
+4。读取输入流中的数据
+5.流的关闭
+
+URL网络编程
+1.URL:统一资源定位符,对应互联网某一资源地址
+NEW一个URL类的常用方法:1.getProtocol()2.getHost()3.getPort()4.getPath()
+
+
+p631
+
+
+
+
+
+
+
