@@ -1,7 +1,10 @@
 import org.junit.Test;
 
 import javax.print.DocFlavor;
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @author cc
@@ -52,7 +55,32 @@ public class ReflectionTest {
 //        调用私有方法
         Method at = clazz.getDeclaredMethod("AT", DocFlavor.STRING.class);
         at.setAccessible(true);
-        at.invoke(person1,"zhj")
+        at.invoke(person1,"zhj");
+
+    }
+
+    @Test
+    public  void test3() throws ClassNotFoundException {
+//        方式一:调用运行时类的属性:.class
+        Class<Person> class1=Person.class;
+//        方式二：通过运行时类的对象,调用getClass()
+        Person p1=new Person();
+        p1.getClass();
+        Class class2=p1.getClass();
+//        方式三:调用Class的静态方法:forName(String classPath)
+        Class<?> class3 = Class.forName(String.valueOf(p1.getClass()));
+//方式四:使用类的加载器:ClassLoader
+        ClassLoader classLoader= ReflectionTest.class.getClassLoader();
+        Class class4=classLoader.loadClass(p1.getName());
+
+
+
+
+
+
+
+
+        )
 
     }
 }
