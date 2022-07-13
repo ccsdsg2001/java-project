@@ -1,3 +1,5 @@
+package test;
+
 /**
  * @author cc
  * @date 2022年07月12日 2:49
@@ -36,7 +38,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "test.Person{" +
                 "name='" + name + '\'' +
                 ", Age=" + Age +
                 '}';

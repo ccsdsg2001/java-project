@@ -1135,9 +1135,9 @@ java.lang.reflect.Constructor:代表类的构造器
 
 获取Class的实例的方式
 //      方式一:调用运行时类的属性:.class
-        Class<Person> class1=Person.class;
+        Class<test.Person> class1=test.Person.class;
 //      方式二：通过运行时类的对象,调用getClass()
-        Person p1=new Person();
+        test.Person p1=new test.Person();
         p1.getClass();
         Class class2=p1.getClass();
 //      方式三:调用Class的静态方法:forName(String classPath)
@@ -1164,7 +1164,93 @@ ClassLoader的理解
 拓展类加载器:负责jre/lib/ext目录下的jar包或-D java.ext.dirs 指定目录下jar包装入工作库
 系统类加载器:负责java - classpath或 -D java.class.path所指的目录下的类与jar包装入工作,最常用的加载器
 
-P646
+读取配置文件的方式：
+//        读取配置文件方式一：
+        Properties properties=new Properties();
+        FileInputStream fis=new FileInputStream("jdbc.properties");
+        properties.load(fis);
+//        读取配置文件方式二：使用ClassLoader
+//        配置文件默认识别为：当前module的src下
+
+        ClassLoader classLoader=ClassLoader.class.getClassLoader();
+        InputStream is=classLoader.getResourceAsStream("jdbc.properties");
+        properties.load(is);
+
+创建运行时类的对象
+步骤: Class<test.Person> class1 =test.Person.class;
+           Object o = class1.newInstance();
+newInstance():调用此方法，创建对应的运行时类的对象。内部调用了运行时类的空参构造器
+         * 要想此方法正常的创建运行时类的对象，要求：
+         * （1）运行时类必须提供空参的构造器
+         * （2）空参的构造器的访问权限得够，通常，设置为public
+         * 在javabean中要求提供一个public的空参构造器，原因：
+         * （1）便于通过反射，创建运行时类的对象
+         * （2）便于子类继承运行此运行时类，默认调用super()时,保证父类有此构造器
+
+获取当前运行时类的属性结构
+//    getFields():获取当前运行时类及其父类中声明为public访问权限的属性
+        Class clazz= Person.class;
+        Field[] field = clazz.getFields();
+        for(Field field1:field){
+            System.out.println(field1);
+        }
+//getDeclaredFields():获取当前运行时类中声明的所有属性。（不包含父类中声明的属性）
+        Field[] declaredFields = clazz.getDeclaredFields();
+        for(Field field3:declaredFields ){
+            System.out.println(field3);
+获取权限修饰符 数据类型 变量名
+  //            1.权限修饰符
+              int modifiers = field3.getModifiers();
+              System.out.println(modifiers);
+  //              2.数据类型
+              Class type =field3.getType();
+              System.out.println(type);
+  //3.变量名
+              String name = field3.getName();
+              System.out.println(name);
+
+获取运行时类的方法结构
+getMethods():获取当前运行时类及其所有父类中声明为public权限的方法
+         Class clazz= Person.class;
+         Method[] methods = clazz.getMethods();
+         for(Method method:methods){
+             System.out.println(method);
+         }
+ getDeclaredMethods():获取当前运行类所有声明的所有方法（不包含父类）
+         Method[] declaredMethods = clazz.getDeclaredMethods();
+         for(Method method1:declaredMethods){
+             System.out.println(method1);
+
+获取运行时类权限修饰符 返回值类型 方法名（参数类型1 形参名1，...)throws Exception{}
+        Class clazz= Person.class;
+        Method[] declaredMethods = clazz.getDeclaredMethods();
+        for(Method method2:declaredMethods){
+            //        1.获取方法声明的注解
+            Annotation[] annotations = method2.getAnnotations();
+            for(Annotation a:annotations){
+                System.out.println(a);
+// 2.权限修饰符
+                System.out.println(Modifier.toString(method2.getModifiers())+"\t");
+//                3.返回值类型
+                System.out.println(method2.getReturnType().getName() + "\t");
+//                4.方法名
+                System.out.println(method2.getName());
+//                5.形参列表
+                Class[] parameterTypes = method2.getParameterTypes();
+                if(!(parameterTypes==null&&parameterTypes.length==0)){
+                    for(Class aon:parameterTypes){
+                        System.out.println(aon.getName());
+                    }
+                }
+//                6.抛出的异常
+                Class[] exceptioin=method2.getExceptionTypes();
+                if(exceptioin.length>0){
+                    for(Class a3:exceptioin){
+                        System.out.println(a3);
+                    }
+
+
+p653
 
 
 
