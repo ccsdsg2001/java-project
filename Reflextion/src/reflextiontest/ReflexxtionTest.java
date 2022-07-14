@@ -3,7 +3,10 @@ package reflextiontest;
 import org.junit.Test;
 import test.Person;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @author cc
@@ -45,4 +48,40 @@ public class ReflexxtionTest {
         name.set(o,"Tom");
         System.out.println(name.get(o));
     }
+
+//    如何操作运行时类中指定的方法
+    @Test
+    public void test21() throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Class clazz= Person.class;
+        Person p = (Person)clazz.newInstance();
+//        1.获取指定的某个方法
+//        getDeclaredMethod():参数1：指明获取的方法的名称 参数2：指明获取方法的形参列表
+        Method show = clazz.getDeclaredMethod("show", String.class);
+//        2.保证当前方法是可以访问的
+        show.setAccessible(true);
+//        invoke():参数1：方法的调用者 参数2：给方法形参赋值的实参.invoke()的返回值即为对应类中调用的方法的返回值
+        show.invoke(p,"CHN");
+
+//        调用静态方法，如果调用的运行时类中的方法没有返回值，则此invoke（）返回null
+        Method showDesc = clazz.getDeclaredMethod("showDesc");
+        showDesc.setAccessible(true);
+        Object invoke = showDesc.invoke(Person.class);
+        System.out.println(invoke);
+    }
+
+    @Test
+//    如何调用运行时类中的指定的构造器
+    public void test3() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class clazz=Person.class;
+//        1。获取指定的构造器
+//        getDeclaredConstructor():参数:指明构造器的参数列表
+        Constructor declaredConstructor = clazz.getDeclaredConstructor(String.class);
+//        2.保证此构造器是可以访问的
+        declaredConstructor.setAccessible(true);
+//        3.调用此构造器创建运行时类的对象
+        Object tom = declaredConstructor.newInstance("tom");
+        System.out.println(tom);
+
+    }
+
 }

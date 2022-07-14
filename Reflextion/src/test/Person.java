@@ -45,11 +45,16 @@ public class Person {
                 '}';
     }
 
-    public void show(){
-        System.out.println("w");
+    public void show(String nation){
+        System.out.println(nation);
+
     }
 
     private void AT(){
         System.out.println("private");
+    }
+
+    private static void showDesc(){
+        System.out.println("wddddd");
     }
 }
