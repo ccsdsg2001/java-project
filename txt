@@ -1249,11 +1249,79 @@ getMethods():获取当前运行时类及其所有父类中声明为public权限�
                         System.out.println(a3);
                     }
 
+//    获取构造器结构
+    @Test
+    public void test1(){
+//        getConstructors():获取当前运行时类中声明为public 的构造器
+        Class clazz= Person.class;
+        Constructor[] constructors = clazz.getConstructors();
+        for (Constructor constructor:constructors){
+            System.out.println(constructor);
+        }
 
-p653
+//getDeclaredConstructors():获取当前运行时类中声明的所有构造器
+        Constructor[] declaredConstructors = clazz.getDeclaredConstructors();
+        for (Constructor constructor:declaredConstructors){
+            System.out.println(constructor);
+        }
+
+    }
+
+获取运行时类的父类
+Class clazz= Person.class;
+Class superclass = clazz.getSuperclass();
+System.out.println(superclass);
+获取运行时类的带泛型父类
+    Type genericSuperclass = clazz.getGenericSuperclass();
+    System.out.println(genericSuperclass);
+获取运行时类的带泛型父类的泛型
+    ParameterizedType parameterizedType = (ParameterizedType) genericSuperclass;
+    Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+    System.out.println((Class)actualTypeArguments[0]);
+获取运行类实现的接口
+    Class[] interfaces = clazz.getInterfaces();
+    for(Class c :interfaces){
+        System.out.println(c);
+    }
+获取运行时类父类实现的接口
+    Class[] interfaces1 = clazz.getSuperclass().getInterfaces();
+    for(Class c:interfaces1){
+        System.out.println(c);
+    }
+获取运行时类所在的包
+    Package aPackage = clazz.getPackage();
+    System.out.println(aPackage);
+获取运行类声明的注解
+    Annotation[] annotations = clazz.getAnnotations();
+    System.out.println(annotations);
+
+调用运行类中指定的结构：属性，方法，构造器
+//        获取指定的属性:要求运行时类中声明的属性为public
+//        通常不常用此方式
+        Class clazz= Person.class;
+//        创建运行时类的对象
+        Person o = (Person) clazz.newInstance();
+        Field id = clazz.getField("id");
+//        设置当前属性的值
+//        set():参数1:指明设置哪个对象的属性 参数2:将此属性值设置为多少
+        id.set(o,1001);
+//        获取当前属性的值
+//        get():参数1:获取哪个对象的当前属性值
+        id.get(o);
 
 
+如何操作运行时类指定的属性（一般使用此方式）
+        Class clazz= Person.class;
+//        创建运行时类的对象
+        Person o = (Person) clazz.newInstance();
+//        1.getDeclaredField(String fieldname):获取运行时类中指定变量名的属性
+        Field name = clazz.getDeclaredField("name");
+//        2.保证当前属性是可以访问的
+        name.setAccessible(true);
+//        3.获取，设置指定对象的此属性值
+        name.set(o,"Tom");
+        System.out.println(name.get(o));
 
-
+p657
 
 

@@ -7,6 +7,7 @@ package test;
 public class Person {
     private String name;
     public int Age;
+    public int id;
 
 
     public Person() {
