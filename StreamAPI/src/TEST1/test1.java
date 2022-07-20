@@ -69,7 +69,7 @@ public class test1 {
         integers.stream().sorted().forEach(System.out::println);
         //sorted(Comparator)--定制排序
         List<Employee> employees = EmployeeData.getEmployees();
-        employees.stream().sorted((e1,e2)->{return Integer.compare(e1.getAge(),e2.getAge())}).forEach(System.out::println);
+        employees.stream().sorted((e1,e2)->{return Integer.compare(e1.getAge(),e2.getAge());}).forEach(System.out::println);
 
     }
 }
