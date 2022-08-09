@@ -10,7 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/test1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/File3" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tcp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Reflextion/Reflaction" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Reflaction" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

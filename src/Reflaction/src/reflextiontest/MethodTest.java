@@ -1,7 +1,7 @@
-package reflextiontest;
+package src.reflextiontest;
 
 import org.junit.Test;
-import test.Person;
+import src.test.Person;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

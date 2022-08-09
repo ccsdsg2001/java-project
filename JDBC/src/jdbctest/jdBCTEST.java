@@ -1,3 +1,5 @@
+package jdbctest;
+
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -15,7 +17,7 @@ public class jdBCTEST {
     //    方式一:
     @Test
     public void test1() throws SQLException {
-        Driver driver = new com.mysql.jdbc.Driver();
+        Driver driver = new com.mysql.cj.jdbc.Driver();
 
         String url = "jdbc:mysql://localhost:3306/atguigudb?useUnicode=true&characterEncoding=utf8";
 //        jdbc:mysql:协议
@@ -78,7 +80,7 @@ public class jdBCTEST {
     @Test
     public void GETCONNECTION5() throws Exception {
 //1.读取配置文件中的4个基本信息
-        InputStream resourceAsStream = Connection.class.getClassLoader().getResourceAsStream("E:\\si\\JDBC\\src\\jdbc.properties");
+        InputStream resourceAsStream = Connection.class.getClassLoader().getResourceAsStream("jdbctest/jdbc.properties");
         Properties properties = new Properties();
         properties.load(resourceAsStream);
         String user=properties.getProperty("user");
