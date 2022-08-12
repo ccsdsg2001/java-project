@@ -1897,13 +1897,62 @@ JDBC对查询的通用操作
         FileInputStream fileInputStream = new FileInputStream(new File(""));
         preparedStatement.setBlob(1,fileInputStream);
 
+使用PreparedStatement实现批量插入
+        Connection connection = jdbcutility.getConnection();
+        String sql = "INSERT INTO goods(name)values (?)";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        for(int i =1;i<=20000;i++){
+            ps.setObject(1,"name_"+i);
+            ps.execute();
+        }
+        jdbcutility.closeResource(connection,ps);
+    }
+
+方式二:1.addBatch(),executeBatch(),clearBatch()
+        Connection connection = jdbcutility.getConnection();
+        String sql = "INSERT INTO goods(name)values (?)";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        for(int i =1;i<=20000;i++){
+//            1.攒sql
+            ps.addBatch();
+            if(i%500==0){
+                //2.执行batch
+                ps.executeBatch();
+//                3.清空batch
+                ps.clearBatch();
+            }
+        }
+        jdbcutility.closeResource(connection,ps);
+    }
+
+方式三:设置不允许自动提交
+        Connection connection = jdbcutility.getConnection();
+        String sql = "INSERT INTO goods(name)values (?)";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        connection.setAutoCommit(false);
+        for(int i =1;i<=20000;i++){
+//            1.攒sql
+            ps.addBatch();
+            if(i%500==0){
+                //2.执行batch
+                ps.executeBatch();
+//                3.清空batch
+                ps.clearBatch();
+            }
+        }
+        connection.commit();
+        jdbcutility.closeResource(connection,ps);
+
+获取当前连接的隔离级别
+connection.getTransactionIsolation();
+设置数据库的隔离级别
+connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+取消自动提交数据
+connection.setAutoCommit(False);
 
 
 
 
 
 
-
-
-
-p32
+p43

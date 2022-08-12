@@ -19,12 +19,12 @@ public class CRUD {
 //        update(sql,"cc");
 
         String sql1="UPDATE  jobs SET min_salary = ? WHERE max_salary= ? ";
-        update(sql1, "90004","4200");
+//        update(sql1, "90004","4200");
     }
 //    通用的增删改操作
-    public void update(String sql,Object...args) throws Exception{
+    public void update(Connection connection,String sql,Object...args) throws Exception{
         //sql中占位符的个数与可变形参的个数相同
-        Connection connection = jdbcutility.getConnection();
+
         PreparedStatement ps=connection.prepareStatement(sql);
         for(int i=0;i<args.length;i++){
             ps.setObject(i+1, args[i]);//小心参数声明错误
@@ -56,6 +56,7 @@ public class CRUD {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigudb?useUnicode=true&characterEncoding=utf8", "root", "root");
         String sql = "INSERT INTO jobs(job_id,job_title)values(?,?)";
         PreparedStatement ps = connection.prepareStatement(sql);
+        connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 //        InputStream resourceAsStream = ClassLoader.getSystemClassLoader().getResourceAsStream("jdbctest/jdbc.properties");
 //        Properties properties = new Properties();
