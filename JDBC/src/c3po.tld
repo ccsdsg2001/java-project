@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<c3p0-config>
+
+    <default-config>
+        <property name="maxPoolSize">30</property>
+        <property name="minPoolSize">10</property>
+    </default-config>
+
+    <named-config name="HELLO">
+        <property name="DriverClass">com.mysql.jdbc.Driver</property>
+        <property name="JdbcUrl">jdbc:mysql://localhost:3306/atguigudb?useUnicode=true&amp;characterEncoding=utf8\n</property>
+        <property name="user">root</property>
+        <property name="password">root</property>
+    </named-config>
+
+    <named-config name="littleTeenyApp">
+        <property name="maxPoolSize">5</property>
+        <property name="minPoolSize">2</property>
+    </named-config>
+
+</c3p0-config>
