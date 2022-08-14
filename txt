@@ -2006,7 +2006,7 @@ DruidDataSource druidDataSource = new DruidDataSource();
         int update = queryRunner.update(connection, sql, "1");
         System.out.println(update);
 
-查询操作
+查询操作.
         String sql1="SELECT * FROM emp";
         BeanHandler<tableClass> beanHandler = new BeanHandler<>(tableClass.class);
         BeanListHandler<tableClass> beanHandle1r = new BeanListHandler<>(tableClass.class);
